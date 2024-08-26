@@ -9,16 +9,17 @@ def type_file_content(filename, delay):
         typeable_chars = set(string.printable)
         
         with open(filename, 'r') as file:
-            for line in file:
-                for char in line:
-                    if char not in typeable_chars:
-                        print(f"Error: Non-typeable character found: '{char}' (Unicode: {ord(char)})")
-                        sys.exit(1)
-            
             content = file.read()
+
+            for char in content:
+                if char not in typeable_chars:
+                    print(f"Error: Non-typeable character found: '{char}' (Unicode: {ord(char)})")
+                    sys.exit(1)
+
 
         time.sleep(delay)
 
+        print(content)
         pyautogui.typewrite(content, interval=0.05)
 
     except FileNotFoundError:
