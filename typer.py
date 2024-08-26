@@ -1,5 +1,5 @@
 import sys
-import pyautogui
+import keyboard
 import time
 import argparse
 import string
@@ -19,8 +19,9 @@ def type_file_content(filename, delay):
 
         time.sleep(delay)
 
-        print(content)
-        pyautogui.write(content, interval=0.05)
+        for char in content:
+            keyboard.write(char)
+            time.sleep(0.25)
 
     except FileNotFoundError:
         print(f"Error: The file '{filename}' was not found.")
