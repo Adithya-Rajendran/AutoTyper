@@ -20,7 +20,7 @@ def type_file_content(filename, delay):
         time.sleep(delay)
 
         print(content)
-        pyautogui.typewrite(content, interval=0.05)
+        pyautogui.write(content, interval=0.05)
 
     except FileNotFoundError:
         print(f"Error: The file '{filename}' was not found.")
